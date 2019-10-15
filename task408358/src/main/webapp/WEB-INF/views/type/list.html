@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List iNotes</title>
+</head>
+<body>
+
+    <h1 class="title">Type List iNotes</h1>
+    <p>
+        <a href="/create-type-note">New Type Note</a> ||
+        <a href="/view-note">View All Note</a>
+    </p>
+
+    <table border="1" width="600">
+        <div>
+            <tr>
+                <td>Id</td>
+                <td>Type</td>
+                <td>Description</td>
+                <td></td>
+            </tr>
+            <div th:each="typeNote,state : ${typeNotes}">
+                <tr>
+                    <td th:text="${state.count}"></td>
+                    <td th:text="${typeNote.name}"></td>
+                    <td th:text="${typeNote.description}"></td>
+                    <td>
+                        <a th:href="@{/edit-type-note/__${typeNote.id}__}"  th:text="Edit"></a> ||
+                        <a th:href="@{/delete-type-note/__${typeNote.id}__}"  th:text="Delete"></a>
+                    </td>
+                </tr>
+            </div>
+        </div>
+    </table>
+
+</body>
+</html>
